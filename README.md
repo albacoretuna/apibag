@@ -1,10 +1,11 @@
-# postcat
-Because you might not need a full desktop app to post http :D
+# httpony
+Because you might not want a full desktop app to talk http :D
 
-I'm not happy with postman, clicking around is not my favorite part of the day. However its persistent history and collections are cool features. Let's see if the same experience can be built in command line.
+I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something that I can find in cli tools. Let's  see if the same experience can be built in command line.
 
-# How this will be?
+# How this will work?
 
+I don't know. I'm just trying different ideas. So far an immersive cli tool sounds good. 
 ## background:
 ```bash
 Omid
