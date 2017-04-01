@@ -1,6 +1,8 @@
 # postcat
 Because you might not need a full desktop app to post http :D
 
+I'm not happy with postman, clicking around is not my favorite part of the day. However its persistent history and collections are cool features. Let's see if the same experience can be built in command line.
+
 # How this will be?
 
 ## background:

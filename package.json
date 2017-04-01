@@ -1,0 +1,20 @@
+{
+  "name": "postcat",
+  "version": "0.0.0",
+  "description": "Another tool for working with api",
+  "main": "postcat.js",
+  "repository": "git@github.com:omidfi/postcat.git",
+  "scripts": {
+    "test": "standard"
+  },
+  "author": "Omid Hezaveh",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "prettyjson": "^1.2.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "standard": "^9.0.2",
+    "vorpal": "^1.11.4"
+  }
+}
