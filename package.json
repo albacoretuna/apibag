@@ -1,6 +1,6 @@
 {
   "name": "apibag",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Another tool for working with http api endpoints",
   "main": "apibag.js",
   "repository": "git@github.com:omidfi/apibag.git",
