@@ -1,12 +1,21 @@
 #!/usr/bin/env node
 'use strict'
+const ora = require('ora')
+const spinner = ora({ spinner: 'hearts', color: 'red' })
 const vorpal = require('vorpal')()
 const request = require('request-promise')
 const prettyjson = require('prettyjson')
+const chalk = require('chalk')
 
 // helper functions
 const displayResponse = (response) => {
-  console.log('HTTP/', response.httpVersion, response.statusCode, response.statusMessage)
+  spinner.succeed()
+  console.log(
+    'HTTP/',
+    response.httpVersion,
+    chalk.blue.bold(response.statusCode),
+    response.statusMessage
+  )
   console.log(prettyjson.render(response.headers))
   console.log(response.body)
 }
@@ -30,6 +39,7 @@ vorpal
   .history('apibag')
   .command('get <uri>', 'sends a get request')
   .action(function (args, callback) {
+    spinner.start()
     const options = {
       method: 'GET',
       uri: args.uri,
@@ -41,7 +51,12 @@ vorpal
         callback()
       })
       .catch((error) => {
-        console.log('errors found: ', error)
+        spinner.fail()
+        if (error.StatusCodeError) {
+          console.log('HTTP ', error.StatusCodeError)
+        } else {
+          console.log('HTTP ', error)
+        }
         callback()
       })
   })
@@ -53,6 +68,7 @@ vorpal
 vorpal
   .command('post <uri> [data...]', 'sends a post request')
   .action(function (args, callback) {
+    spinner.start()
     const options = {
       method: 'POST',
       uri: args.uri,
@@ -66,7 +82,12 @@ vorpal
         callback()
       })
       .catch((error) => {
-        console.log('errors found: ', error)
+        spinner.fail()
+        if (error.statusCode) {
+          console.log('HTTP ', error.statusCode)
+        } else {
+          console.log('HTTP ', error)
+        }
         callback()
       })
   })

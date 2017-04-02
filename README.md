@@ -1,8 +1,14 @@
 # apibag
 Simple command line tool to make http requests
 
+## Install
+
+```bash
+npm install -g apibag
+```
+
 ## Why?
-I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something to miss when using cli tools, like httpie or curl.
+I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features. And those are something to miss when using cli tools, like httpie or curl.
 
 Let's  see if the same experience can be built in command line.
 
