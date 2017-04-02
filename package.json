@@ -1,9 +1,9 @@
 {
-  "name": "postcat",
-  "version": "0.0.0",
-  "description": "Another tool for working with api",
-  "main": "postcat.js",
-  "repository": "git@github.com:omidfi/postcat.git",
+  "name": "httpony",
+  "version": "0.0.1",
+  "description": "Another tool for working with http api endpoints",
+  "main": "httpony.js",
+  "repository": "git@github.com:omidfi/httpony.git",
   "scripts": {
     "test": "standard"
   },
