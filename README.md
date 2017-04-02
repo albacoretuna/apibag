@@ -3,9 +3,13 @@ Because you might not want a full desktop app to talk http :D
 
 I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something that I can find in cli tools. Let's  see if the same experience can be built in command line.
 
+## Work in progress
+
+httpony can mak post and get requests currently, with persistent history, but that's about it! It's a work in progress.
+
 # How this will work?
 
-I don't know. I'm just trying different ideas. So far an immersive cli tool sounds good. 
+I don't know. I'm just trying different ideas. So far an immersive cli tool sounds good.
 ## background:
 ```bash
 Omid
