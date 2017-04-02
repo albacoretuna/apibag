@@ -14,11 +14,13 @@ const displayResponse = (response) => {
 // input name=apibag output { name: 'apibag'}
 const payloadDecorator = (payload) => {
   if (!Array.isArray(payload)) {
-    return ''
+    return
   }
   return payload.reduce((final, current) => {
     const propertyName = current.split('=')[0]
-    final[propertyName] = current.split('=')[1].replace(/\\'/g, '')
+    final[propertyName] = current.split('=')[1]
+      .replace(/^\'/g, '') // eslint-disable-line
+      .replace(/\'$/g, '') // eslint-disable-line
     return final
   }, {})
 }

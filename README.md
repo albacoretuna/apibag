@@ -1,11 +1,13 @@
 # apibag
-Because you might not want a full desktop app to talk http :D
+Simple command line tool to make http requests
 
-I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something that I can find in cli tools. Let's  see if the same experience can be built in command line.
+I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something to miss when using cli tools, like httpie or curl.
+
+Let's  see if the same experience can be built in command line.
 
 ## Work in progress
 
-apibag can mak post and get requests currently, with persistent history, but that's about it! It's a work in progress.
+apibag can make post and get requests currently, with persistent history, but that's about it! It's a work in progress.
 
 # How this will work?
 
@@ -38,8 +40,8 @@ If we're just riffing on this, I'd like to have a cli tool that works like:
 Then I could put all those test requests in source control and version them properly, which you can do with postman, but the format is not super readable
 JaniEJaniE on Fri at 11:37
 If you make this I will ship you a bottle of fine whisky
-```
 
+```
 file format
 
 ```bash
@@ -49,7 +51,7 @@ Header: {parameterized_value}
 ---
  // this is body, can be anything
  // but it would be nice to have comments
- // and also use relaxed-json here to it's easier to author
+ // and also use relaxed-json here so it's easier to author
 { "foo": "bar"}
 ```
 
