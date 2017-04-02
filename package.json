@@ -1,15 +1,15 @@
 {
-  "name": "httpony",
+  "name": "apibag",
   "version": "1.0.2",
   "description": "Another tool for working with http api endpoints",
-  "main": "httpony.js",
-  "repository": "git@github.com:omidfi/httpony.git",
+  "main": "apibag.js",
+  "repository": "git@github.com:omidfi/apibag.git",
   "scripts": {
     "test": "standard"
   },
   "author": "Omid Hezaveh",
   "bin": {
-    "httpony": "./httpony.js"
+    "apibag": "./apibag.js"
   },
   "license": "MIT",
   "dependencies": {

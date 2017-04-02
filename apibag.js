@@ -11,7 +11,7 @@ const displayResponse = (response) => {
   console.log(response.body)
 }
 
-// input name=httpony output { name: 'httpony'}
+// input name=apibag output { name: 'apibag'}
 const payloadDecorator = (payload) => {
   if (!Array.isArray(payload)) {
     return ''
@@ -25,7 +25,7 @@ const payloadDecorator = (payload) => {
 
 // vorpal commands
 vorpal
-  .history('httpony')
+  .history('apibag')
   .command('get [uri]', 'sends a get request')
   .action(function (args, callback) {
     const options = {
@@ -66,5 +66,5 @@ vorpal
   })
 
 vorpal
-  .delimiter('httpony')
+  .delimiter('apibag')
   .show()
