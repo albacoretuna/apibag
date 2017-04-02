@@ -1,6 +1,7 @@
 # apibag
 Simple command line tool to make http requests
 
+## Why?
 I love postman, but clicking around is not my favorite part of the day. However its persistent history and collections are cool features are something to miss when using cli tools, like httpie or curl.
 
 Let's  see if the same experience can be built in command line.
@@ -9,9 +10,16 @@ Let's  see if the same experience can be built in command line.
 
 apibag can make post and get requests currently, with persistent history, but that's about it! It's a work in progress.
 
-# How this will work?
+## Milestons
+  * get and post methods work just like httpie
+  * Separate name spaces / bags can be defined for keeping the history. So that saying open projectX only brings up the history for that project.
+  * Each request can be saved in some format
 
-I don't know. I'm just trying different ideas. So far an immersive cli tool sounds good.
+
+## How will this work?
+
+I don't know. I'm just trying different ideas. So far an immersing cli tool sounds good. But later we might move it to a normal cli, with atomic single commands.
+
 ## background:
 ```bash
 Omid
