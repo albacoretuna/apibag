@@ -1,6 +1,6 @@
 {
   "name": "httpony",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Another tool for working with http api endpoints",
   "main": "httpony.js",
   "repository": "git@github.com:omidfi/httpony.git",
