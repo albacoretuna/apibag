@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+'use strict'
 const vorpal = require('vorpal')()
 const request = require('request-promise')
 const prettyjson = require('prettyjson')
@@ -28,7 +28,7 @@ const payloadDecorator = (payload) => {
 // vorpal commands
 vorpal
   .history('apibag')
-  .command('get [uri]', 'sends a get request')
+  .command('get <uri>', 'sends a get request')
   .action(function (args, callback) {
     const options = {
       method: 'GET',
@@ -45,7 +45,11 @@ vorpal
         callback()
       })
   })
-
+//
+// ///
+// post
+// //////
+//
 vorpal
   .command('post <uri> [data...]', 'sends a post request')
   .action(function (args, callback) {
@@ -65,6 +69,17 @@ vorpal
         console.log('errors found: ', error)
         callback()
       })
+  })
+//
+// ///
+// clear screen
+// //////
+//
+vorpal
+  .command('clear', 'clear screen, not the history, just the screen')
+  .action(function (args, cb) {
+    process.stdout.write('\u001B[2J\u001B[0;0f')
+    cb()
   })
 
 vorpal
