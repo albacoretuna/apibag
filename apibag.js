@@ -39,15 +39,26 @@ const payloadDecorator = (payload) => {
   }, {})
 }
 
+// add http if no protocol found in url
+// credits: http://bit.ly/2nPIEr4
+const addHttp = (url) => {
+  if (!/^(?:f|ht)tps?:\/\//.test(url)) {
+    url = 'http://' + url
+  }
+  return url
+}
+
 // vorpal commands
 vorpal
   .history('apibag')
   .command('get <uri>', 'sends a get request')
+  .option('-h', '--header <header>', 'Set http headers')
   .action(function (args, callback) {
     spinner.start()
+    console.log(args)
     const options = {
       method: 'GET',
-      uri: args.uri,
+      uri: addHttp(args.uri),
       resolveWithFullResponse: true,
       timeout: TIMEOUT
     }
@@ -66,6 +77,7 @@ vorpal
         callback()
       })
   })
+
 //
 // ///
 // post
@@ -77,7 +89,7 @@ vorpal
     spinner.start()
     const options = {
       method: 'POST',
-      uri: args.uri,
+      uri: addHttp(args.uri),
       body: payloadDecorator(args.data),
       json: true,
       resolveWithFullResponse: true,
@@ -98,6 +110,7 @@ vorpal
         callback()
       })
   })
+
 //
 // ///
 // clear screen
