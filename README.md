@@ -68,4 +68,6 @@ Header: {parameterized_value}
  // and also use relaxed-json here so it's easier to author
 { "foo": "bar"}
 ```
+## Ideas
 
+  * use cd, ls, etc. to move between saved requests

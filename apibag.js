@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 'use strict'
+
+// packages
 const ora = require('ora')
 const spinner = ora({ spinner: 'hearts', color: 'red' })
 const vorpal = require('vorpal')()
 const request = require('request-promise')
 const prettyjson = require('prettyjson')
 const chalk = require('chalk')
+
+// http request time out in milliseconds
+const TIMEOUT = 1000 * 20
 
 // helper functions
 const displayResponse = (response) => {
@@ -43,7 +48,8 @@ vorpal
     const options = {
       method: 'GET',
       uri: args.uri,
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
+      timeout: TIMEOUT
     }
     request(options)
       .then((response) => {
@@ -74,7 +80,8 @@ vorpal
       uri: args.uri,
       body: payloadDecorator(args.data),
       json: true,
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
+      timeout: TIMEOUT
     }
     request(options)
       .then((response) => {
