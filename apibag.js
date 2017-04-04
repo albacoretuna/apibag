@@ -51,8 +51,7 @@ const addHttp = (url) => {
 // vorpal commands
 vorpal
   .history('apibag')
-  .command('get <uri>', 'sends a get request')
-  .option('-h', '--header <header>', 'Set http headers')
+  .command('get <uri> [headers...]', 'sends a get request')
   .action(function (args, callback) {
     spinner.start()
     console.log(args)
