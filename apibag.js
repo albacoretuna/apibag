@@ -30,9 +30,38 @@ const payloadDecorator = (payload) => {
   if (!Array.isArray(payload)) {
     return
   }
-  return payload.reduce((final, current) => {
+
+  // keep only data, they have =
+  const hasEqual = (text) => text.indexOf('=') !== -1
+  const onlyData = payload.filter(hasEqual)
+
+  // make an object out of data
+  return onlyData.reduce((final, current) => {
     const propertyName = current.split('=')[0]
     final[propertyName] = current.split('=')[1]
+      .replace(/^\'/g, '') // eslint-disable-line
+      .replace(/\'$/g, '') // eslint-disable-line
+    return final
+  }, {})
+}
+
+// input headername:someValue output { headername: 'someValue'}
+const headerDecorator = (header) => {
+  if (!Array.isArray(header)) {
+    return
+  }
+
+  // keep only headers, they have :
+  const hasColon = (text) => text.indexOf(':') !== -1
+  const onlyHeaders = header.filter(hasColon)
+
+  if (onlyHeaders.length < 1) {
+    return
+  }
+  // make an object out of headers
+  return onlyHeaders.reduce((final, current) => {
+    const propertyName = current.split(':')[0]
+    final[propertyName] = current.split(':')[1]
       .replace(/^\'/g, '') // eslint-disable-line
       .replace(/\'$/g, '') // eslint-disable-line
     return final
@@ -54,12 +83,14 @@ vorpal
   .command('get <uri> [headers...]', 'sends a get request')
   .action(function (args, callback) {
     spinner.start()
-    console.log(args)
+    // console.log(args)
     const options = {
       method: 'GET',
       uri: addHttp(args.uri),
       resolveWithFullResponse: true,
-      timeout: TIMEOUT
+      simple: false,
+      timeout: TIMEOUT,
+      headers: headerDecorator(args.headers)
     }
     request(options)
       .then((response) => {
@@ -92,7 +123,9 @@ vorpal
       body: payloadDecorator(args.data),
       json: true,
       resolveWithFullResponse: true,
-      timeout: TIMEOUT
+      simple: false,
+      timeout: TIMEOUT,
+      headers: headerDecorator(args.data)
     }
     request(options)
       .then((response) => {
