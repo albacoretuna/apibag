@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict'
 
+// natives
+const path = require('path')
+
 // packages
 const ora = require('ora')
 const spinner = ora({ spinner: 'hearts', color: 'red' })
@@ -8,6 +11,20 @@ const vorpal = require('vorpal')()
 const request = require('request-promise')
 const prettyjson = require('prettyjson')
 const chalk = require('chalk')
+const osHomedir = require('os-homedir')
+const jsonfile = require('jsonfile')
+// const Promise = require('bluebird')
+// const fs = Promise.promisifyAll(require('fs-extra'))
+const apibagFolder = path.join(osHomedir(), 'apibag')
+const makeRequestFileName = (request) => {
+  let fileName = `${request.method}-${request.uri}-${Math.round(Math.random() * 1000)}`
+  let fileNameCleaned = fileName.replace(/(?:f|ht)tps?:\/\//g, '').replace(/:|\//g, '')
+  return fileNameCleaned.toLowerCase()
+}
+const saveRequest = (request) => {
+  const requestFilePath = path.join(apibagFolder, 'all', makeRequestFileName(request))
+  jsonfile.writeFileSync(requestFilePath, request)
+}
 
 // http request time out in milliseconds
 const TIMEOUT = 1000 * 20
@@ -92,6 +109,8 @@ vorpal
       timeout: TIMEOUT,
       headers: headerDecorator(args.headers)
     }
+    // persist the request in a file
+    saveRequest(options)
     request(options)
       .then((response) => {
         displayResponse(response)
