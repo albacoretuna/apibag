@@ -1,5 +1,5 @@
 # apibag
-Simple command line tool to make http requests
+Simple command line tool to make http requests (work in progress)
 
 ## Install
 
